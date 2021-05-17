@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="./styles/index.css">
+        <script src="./scripts/index.js"></script>
+        <script src="./scripts/getConfirmation.js"></script>
+        
+    </head>
+    <body>
+        <main id="main">
+            <div id="listSpace">
+                <div id="listContainer">
+                    <ul id="list"></ul>
+                </div>
+                <div id="inputBox">
+                    <p id="commands"><span style="font-size: 1.1em;">Commands:</span><br>
+                    -fill : Autofill list<br>
+                    -count : Count items
+                    </p>
+                    <p id="listError"></p>
+                    <input id="listInput" type="text">
+                    <div>
+                        <button id="addItemBtn" onclick="addItem()">Add Item</button>
+                        <button id="clearItemsBtn" onclick="removeItems()">Clear All</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        
+        <script src="./scripts/indexEventListeners.js"></script>
+    </body>
+
+</html>
+
+
+

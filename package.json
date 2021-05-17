@@ -1,0 +1,15 @@
+{
+  "name": "list-maker",
+  "version": "0.1.0",
+  "description": "Make lists with list maker",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx http-server"
+  },
+  "author": "Michael Parker",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}

@@ -1,2 +1,7 @@
 # list maker
- Make lists
+
+Make lists with list maker
+
+## Commands
+
+`npm run start` to start server

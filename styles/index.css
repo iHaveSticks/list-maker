@@ -1,0 +1,119 @@
+html {
+  font-family: "montserrat", sans-serif;
+  font-size: 110%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #404040;
+}
+
+#listSpace {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 33em;
+  border: 2px white solid;
+  padding: 6px;
+}
+
+#listContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 20em;
+  height: calc(20em + 40px);
+}
+
+#list {
+  /* ul for list */
+  user-select: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  width: calc(17em + 23px); /* 23px for scroll bar */
+}
+#list li {
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1em;
+  list-style: none;
+  cursor: default;
+  overflow: hidden;
+  padding: 0.5em 0.2em;
+  margin: 5px 0;
+  background-color: #a3d392;
+  min-height: 2em;
+  width: 17em;
+  max-width: 17em;
+}
+#list li:focus {
+  background-color: #d39a92;
+}
+#list li:first-child {
+  margin-top: 0;
+}
+#list li:last-child {
+  margin-bottom: 0;
+}
+
+#inputBox {
+  width: 15em;
+  height: calc(20em + 40px);
+  align-self: flex-end;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#commands {
+  flex-grow: 2;
+  max-width: 12em; /* Make into a var */
+  color: white;
+}
+#listError {
+  max-width: 12em;
+  color: darksalmon;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+#listInput {
+  height: 1.5em;
+  font-size: 1em;
+  width: 12em;
+}
+
+#addItemBtn {
+  margin-top: 0.5em;
+  width: 6em;
+  height: 2.5em;
+  background-color: #77c699;
+  border: none;
+}
+#addItemBtn:hover,
+#addItemBtn:focus {
+  box-shadow: inset 1px 1px 6px #263f31;
+}
+
+#clearItemsBtn {
+  margin-top: 0.5em;
+  width: 6em;
+  height: 2.5em;
+  background-color: #c67877;
+  border: none;
+}
+#clearItemsBtn:hover,
+#clearItemsBtn:focus {
+  box-shadow: inset 1px 1px 6px #3f2626;
+}
