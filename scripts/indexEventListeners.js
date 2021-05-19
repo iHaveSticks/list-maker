@@ -1,8 +1,9 @@
-
+const input = document.getElementById("listInput");
+const list = document.getElementById("list");
 
 // Remove list item on click / enter
-document.getElementById("list").addEventListener("click", removeItem);
-document.getElementById("list").addEventListener("keydown", (event) => {
+list.addEventListener("click", removeItem);
+list.addEventListener("keydown", (event) => {
   // Remove item on enter
   if (event.key === "Enter" && allowItemDelete) {
     const next = event.target.nextElementSibling;
@@ -11,20 +12,20 @@ document.getElementById("list").addEventListener("keydown", (event) => {
     if(next) {
       next.focus();
     } else {
-      document.getElementById("listInput").focus();
+      input.focus();
     }
     // A  dd for arrow up and arrow down
   }
 });
 
 // Hover list items
-document.getElementById("list").addEventListener("mouseover", (event) => {
+list.addEventListener("mouseover", (event) => {
   const node = event.target;
   if (node.tagName === "LI") {
     node.style.backgroundColor = "#d39a92";
   }
 });
-document.getElementById("list").addEventListener("mouseout", (event) => {
+list.addEventListener("mouseout", (event) => {
   const node = event.target;
   if (node.tagName === "LI") {
     node.style.backgroundColor = "#a3d392";
@@ -32,28 +33,51 @@ document.getElementById("list").addEventListener("mouseout", (event) => {
 });
 
 
+input.addEventListener('input', () => {
+  if(prevInputsPos === -1) {
+    currInput = input.value;
+  }
+});
 
 // Keyboard controls
-document.getElementById("listInput").addEventListener("keydown", (event) => {
-  // Add item on enter
-  if (event.key === "Enter") {
-    addItem();
-  }
-
-  // Retrieve last item
-  if (event.key === "ArrowUp" && lastInput) {
-    document.getElementById("listInput").value = lastInput;
-  }
-
-  // Delete items on bottom of list
+input.addEventListener("keydown", (event) => {
   let ctrl = event.ctrlKey;
 
-  if (event.key == "x" && ctrl) {//88
-    const list = document.getElementById("list").children;
-    if(list.length > 0) {
-      addError(`Removed Item:\n${list[list.length - 1].innerText}`, false);
-      list[list.length - 1].remove();
+  switch(event.key) {
+
+    // Add item on enter
+    case "Enter":
+      addItem();
+      break;
+
+    // Retrieve / Manuever last inputs / up
+    case "ArrowUp":
+      if(prevInputs[prevInputsPos + 1]) {
+        prevInputsPos++;
+        input.value = prevInputs[prevInputsPos];
+      }
+      break;
+
+    // Retrieve / Manuever last inputs / down
+    case "ArrowDown":
+      if(prevInputsPos -1 >= 0) {
+        prevInputsPos--;
+        input.value = prevInputs[prevInputsPos];
+      } else {
+        prevInputsPos = -1;
+        input.value = currInput ? currInput : "";
+      }
+      break;
+
+    // Delete items on bottom of list (ctrl + x)
+    case "x":
+      const list = list.children;
+      if(list.length > 0 && ctrl) {
+        addError(`Removed Item:\n${list[list.length - 1].innerText}`, false);
+        list[list.length - 1].remove();
+      }
+      break;
+
     }
-  }
 
 });

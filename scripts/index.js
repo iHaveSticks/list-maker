@@ -2,9 +2,15 @@ let allowItemDelete = true; // If item from list should be deleted
 let errorFade; // Name for timeout in addError();
 
 // List Globals
-let maxChars = 17; // 17 is max before wrap
-let maxItems = 100; // 10 is max before overflow
-let lastInput;
+const maxChars = 17; // 17 is max before wrap
+const maxItems = 100; // 10 is max before overflow
+
+let currInput; // current value of listInput
+               // doesn't change when navigating prevInputs
+               
+let prevInputs = []; // max length should be 5
+let prevInputsPos = -1; // position held in prevInputs
+                       // when navigaing
 
 
 
@@ -35,7 +41,7 @@ function addItem() {
     // Too many Items
     } else if (ulItems.length === maxItems){
       addError(`Too many items;\nmax ${maxItems}`);
-      // no focusOn() here
+      // don't use focusOn() here
 
     // Add item
     } else {
@@ -47,7 +53,13 @@ function addItem() {
     document.getElementById("listInput").value = "";
     focusOn("listInput");
   }
-  lastInput = input;
+
+  if(input != "") {
+    if(prevInputs.length = 5) {prevInputs.pop()};
+    prevInputs.unshift(input);
+    prevInputsPos = -1;
+    currInput = "";
+  }
 }
 
 
@@ -93,14 +105,22 @@ function focusOn(id, select = false) {
 
 function autoFill() {
   // Fill the list with numbers
+  // don't use addItem() here
   const ul = document.getElementById("list");
   const length = ul.getElementsByTagName("LI").length;
+  let input;
+
   if (length === 100) {
     addError("List is already full");
   } else {
     for(let i = length; i < 100; i++) {
-      document.getElementById("listInput").value = i+1;
-      addItem();
+      input = i+1;
+
+      // add items
+      const li = document.createElement("LI");
+      li.innerText = input;
+      li.setAttribute("tabindex", 0);
+      ul.appendChild(li);
     }
   }
 }
