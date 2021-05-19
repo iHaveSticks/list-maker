@@ -71,10 +71,10 @@ input.addEventListener("keydown", (event) => {
 
     // Delete items on bottom of list (ctrl + x)
     case "x":
-      const list = list.children;
-      if(list.length > 0 && ctrl) {
-        addError(`Removed Item:\n${list[list.length - 1].innerText}`, false);
-        list[list.length - 1].remove();
+      const listArray = list.children;
+      if(listArray.length > 0 && ctrl) {
+        addError(`Removed Item:\n${listArray[listArray.length - 1].innerText}`, false);
+        listArray[listArray.length - 1].remove();
       }
       break;
 
