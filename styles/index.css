@@ -94,26 +94,28 @@ body {
   width: 12em;
 }
 
-#addItemBtn {
-  margin-top: 0.5em;
-  width: 6em;
-  height: 2.5em;
-  background-color: #77c699;
-  border: none;
-}
 #addItemBtn:hover,
 #addItemBtn:focus {
   box-shadow: inset 1px 1px 6px #263f31;
 }
 
-#clearItemsBtn {
+.btn {
   margin-top: 0.5em;
   width: 6em;
   height: 2.5em;
-  background-color: #c67877;
   border: none;
 }
-#clearItemsBtn:hover,
-#clearItemsBtn:focus {
+.goodBtn {
+  background-color: #77c699;
+}
+.goodBtn:hover,
+.goodBtn:focus {
+  box-shadow: inset 1px 1px 6px #263f31;
+}
+.badBtn {
+  background-color: #c67877;
+}
+.badBtn:hover,
+.badBtn:focus {
   box-shadow: inset 1px 1px 6px #3f2626;
 }

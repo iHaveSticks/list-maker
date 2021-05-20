@@ -41,12 +41,10 @@ function getConfirmation(fn, goTo = false) {
 
 
   // Foot Styles
-  btnNo.style.width = "4em";
-  btnNo.style.padding = "0.5em";
   btnNo.setAttribute("ID", "modalNo");
+  btnNo.setAttribute("class", "btn goodBtn");
 
-  btnYes.style.width = "4em";
-  btnYes.style.padding = "0.5em";
+  btnYes.setAttribute("class", "btn badBtn");
 
   modalFoot.style.display = "flex";
   modalFoot.style.justifyContent = "space-evenly";

@@ -14,7 +14,6 @@ list.addEventListener("keydown", (event) => {
     } else {
       input.focus();
     }
-    // A  dd for arrow up and arrow down
   }
 });
 
