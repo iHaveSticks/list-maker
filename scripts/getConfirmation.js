@@ -32,11 +32,13 @@ function getConfirmation(fn, goTo = false) {
 
   btnYes.onclick = () => {
     document.getElementById("modal").remove();
+    modal.removeEventListener('keydown', trapTabKey);
     fn();
     if(goTo) {goTo.focus()}
   };
   btnNo.onclick = () => {
     document.getElementById("modal").remove();
+    modal.removeEventListener('keydown', trapTabKey);
   }
 
 
@@ -84,6 +86,50 @@ function getConfirmation(fn, goTo = false) {
   modal.style.textAlign = "center";
   modal.style.fontSize = "110%";
 
+
+
+ /* Trap tab inside of modal */
+
+
+  // Find all focusable children
+  const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+  let focusableElements = modal.querySelectorAll(focusableElementsString);
+
+  // Convert NodeList to Array
+  focusableElements = Array.prototype.slice.call(focusableElements);
+
+  const firstTabStop = focusableElements[0];
+  const lastTabStop = focusableElements[focusableElements.length - 1];
+
+  firstTabStop.focus();
+
+  const trapTabKey = (e) => {
+    // Check for TAB key press
+    if (e.keyCode === 9) {
+
+      // SHIFT + TAB
+      if (e.shiftKey) {
+        if (document.activeElement === firstTabStop) {
+          e.preventDefault();
+          lastTabStop.focus();
+        }
+
+      // TAB
+      } else {
+        if (document.activeElement === lastTabStop) {
+          e.preventDefault();
+          firstTabStop.focus();
+        }
+      }
+    }
+
+    // ESCAPE
+    // if (e.keyCode === 27) {
+    //   closeModal();
+    // }
+  }
+  modal.addEventListener('keydown', trapTabKey);
   document.body.appendChild(modal);
   document.getElementById("modalNo").focus();
+
 }
