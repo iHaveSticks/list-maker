@@ -31,14 +31,12 @@ function getConfirmation(fn, goTo = false) {
   btnYes.innerText = "Yes";
 
   btnYes.onclick = () => {
-    document.getElementById("modal").remove();
-    modal.removeEventListener('keydown', trapTabKey);
+    closeModal();
     fn();
     if(goTo) {goTo.focus()}
   };
   btnNo.onclick = () => {
-    document.getElementById("modal").remove();
-    modal.removeEventListener('keydown', trapTabKey);
+    closeModal();
   }
 
 
@@ -123,13 +121,22 @@ function getConfirmation(fn, goTo = false) {
       }
     }
 
-    // ESCAPE
-    // if (e.keyCode === 27) {
-    //   closeModal();
-    // }
+  //  ESCAPE
+    if (e.keyCode === 27) {
+      closeModal();
+    }
   }
   modal.addEventListener('keydown', trapTabKey);
   document.body.appendChild(modal);
   document.getElementById("modalNo").focus();
 
+}
+
+
+
+
+
+function closeModal() {
+  document.getElementById("modal").remove();
+  modal.removeEventListener('keydown', trapTabKey);
 }
