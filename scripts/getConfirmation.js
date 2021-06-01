@@ -126,17 +126,13 @@ function getConfirmation(fn, goTo = false) {
       closeModal();
     }
   }
+
   modal.addEventListener('keydown', trapTabKey);
   document.body.appendChild(modal);
   document.getElementById("modalNo").focus();
 
-}
-
-
-
-
-
-function closeModal() {
-  document.getElementById("modal").remove();
-  modal.removeEventListener('keydown', trapTabKey);
+  const closeModal = () => {
+    modal.remove();
+    modal.removeEventListener('keydown', trapTabKey);
+  }
 }
