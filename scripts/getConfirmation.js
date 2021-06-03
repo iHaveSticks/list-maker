@@ -37,6 +37,7 @@ function getConfirmation(fn, goTo = false) {
   };
   btnNo.onclick = () => {
     closeModal();
+    if(goTo) {goTo.focus()}
   }
 
 
