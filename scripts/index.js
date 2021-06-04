@@ -1,20 +1,14 @@
-let allowItemDelete = true; // If item from list should be deleted
-let errorFade; // Name for timeout in addError();
 
-// List Globals
-const maxChars = 17; // 17 is max before wrap
-const maxItems = 100; // 10 is max before overflow
+function addItem(itemText = "") {
+  const ul = document.getElementById("list");
+  const li = document.createElement("LI");
 
-let currInput; // current value of listInput
-               // doesn't change when navigating prevInputs
-               
-let prevInputs = []; // max length should be 5
-let prevInputsPos = -1; // position held in prevInputs
-                       // when navigaing
+  li.innerText = itemText;
+  li.setAttribute("tabindex", 0);
+  ul.appendChild(li);
+}
 
-
-
-function addItem() {
+function validateInput() {
   // Add item from the listInput or
   // perform commands depending on input
 
@@ -45,10 +39,7 @@ function addItem() {
 
     // Add item
     } else {
-      const li = document.createElement("LI");
-      li.innerText = input;
-      li.setAttribute("tabindex", 0);
-      ul.appendChild(li);
+      addItem(input);
     }
     document.getElementById("listInput").value = "";
     focusOn("listInput");
@@ -108,19 +99,12 @@ function autoFill() {
   // don't use addItem() here
   const ul = document.getElementById("list");
   const length = ul.getElementsByTagName("LI").length;
-  let input;
 
-  if (length === 100) {
+  if (length === maxItems) {
     addError("List is already full");
   } else {
-    for(let i = length; i < 100; i++) {
-      input = i+1;
-
-      // add items
-      const li = document.createElement("LI");
-      li.innerText = input;
-      li.setAttribute("tabindex", 0);
-      ul.appendChild(li);
+    for(let i = length; i < maxItems; i++) {
+      addItem(i+1);
     }
   }
 }

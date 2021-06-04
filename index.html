@@ -7,8 +7,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" href="./styles/index.css">
+
+        <script src="./scripts/Global_Vars.js"></script>
         <script src="./scripts/index.js"></script>
         <script src="./scripts/getConfirmation.js"></script>
         
@@ -27,7 +28,7 @@
                     <p id="listError"></p>
                     <input id="listInput" type="text">
                     <div>
-                        <button class="btn goodBtn" onclick="addItem()">Add Item</button>
+                        <button class="btn goodBtn" onclick="validateInput()">Add Item</button>
                         <button class="btn badBtn" onclick="removeItems()">Clear All</button>
                     </div>
                 </div>
