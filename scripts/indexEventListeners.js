@@ -5,15 +5,22 @@ const list = document.getElementById("list");
 list.addEventListener("click", removeItem);
 list.addEventListener("keydown", (event) => {
   // Remove item on enter
+
+  const next = event.target.nextElementSibling;
+  const previous = event.target.previousElementSibling;
   if (event.key === "Enter" && allowItemDelete) {
-    const next = event.target.nextElementSibling;
-  
     removeItem(event);
     if(next) {
       next.focus();
     } else {
       input.focus();
     }
+  } else if (event.key === "ArrowUp" && previous) {
+    event.preventDefault();
+    previous.focus();
+  } else if (event.key === "ArrowDown" && next) {
+    event.preventDefault();
+    next.focus();
   }
 });
 

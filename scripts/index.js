@@ -4,7 +4,7 @@ function addItem(itemText = "") {
   const li = document.createElement("LI");
 
   li.innerText = itemText;
-  li.setAttribute("tabindex", 0);
+  ul.innerHTML ? li.setAttribute("tabindex", -1) : li.setAttribute("tabindex", 0);
   ul.appendChild(li);
 }
 
@@ -58,7 +58,12 @@ function removeItem(event) {
   // Remove an item
   // Specifically for items in the list
   if (event.target.tagName === ("LI") && allowItemDelete) {
+    next = event.target.nextElementSibling;
     setTimeout (() => {
+      if (event.target.tabIndex == 0 && next) {
+        next.setAttribute("tabIndex", 0)
+      }
+
       event.target.remove();
       allowItemDelete = true; // Enable item deletion
     }, 300);
