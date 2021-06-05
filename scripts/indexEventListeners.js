@@ -53,7 +53,7 @@ input.addEventListener("keydown", (event) => {
 
     // Add item on enter
     case "Enter":
-      addItem();
+      validateInput();
       break;
 
     // Retrieve / Manuever last inputs / up

@@ -15,6 +15,8 @@ function validateInput() {
   const input = document.getElementById("listInput").value.trim();
   const ul = document.getElementById("list");
   const ulItems = ul.getElementsByTagName("LI");
+
+
   
   if (!input) {
     addError("Please enter something");
@@ -25,27 +27,30 @@ function validateInput() {
     focusOn("listInput", true);
   } else {
     addError();
-
-    // Commands
-    if(input === "-fill") {
-      autoFill();
-    } else if(input === "-count") {
-      addError(ulItems.length + " items");
-
-    // Too many Items
-    } else if (ulItems.length === maxItems){
-      addError(`Too many items;\nmax ${maxItems}`);
-      // don't use focusOn() here
-
-    // Add item
-    } else {
-      addItem(input);
+    console.log(input);
+    
+    //Commands
+    switch (input) {
+      case "-fill":
+        console.log(input);
+        autoFill();
+        break;
+      
+      case "-count":
+        addError(ulItems.length + " items");
+        break;
+  
+      default:
+        if (ulItems.length === maxItems){ // too many items
+          addError(`Too many items;\nmax ${maxItems}`);
+        } else {
+          addItem(input);
+        }
     }
+
     document.getElementById("listInput").value = "";
     focusOn("listInput");
-  }
 
-  if(input != "") {
     if(prevInputs.length = 5) {prevInputs.pop()};
     prevInputs.unshift(input);
     prevInputsPos = -1;
