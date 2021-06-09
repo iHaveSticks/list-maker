@@ -12,6 +12,8 @@ list.addEventListener("keydown", (event) => {
     removeItem(event);
     if(next) {
       next.focus();
+    } else if (previous) {
+      previous.focus();
     } else {
       input.focus();
     }
@@ -23,21 +25,6 @@ list.addEventListener("keydown", (event) => {
     next.focus();
   }
 });
-
-// Hover list items
-list.addEventListener("mouseover", (event) => {
-  const node = event.target;
-  if (node.tagName === "LI") {
-    node.style.backgroundColor = "#d39a92";
-  }
-});
-list.addEventListener("mouseout", (event) => {
-  const node = event.target;
-  if (node.tagName === "LI") {
-    node.style.backgroundColor = "#a3d392";
-  }
-});
-
 
 input.addEventListener('input', () => {
   if(prevInputsPos === -1) {

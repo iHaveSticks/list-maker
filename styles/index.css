@@ -56,7 +56,8 @@ body {
   width: 17em;
   max-width: 17em;
 }
-#list li:focus {
+#list li:focus,
+#list li:hover {
   background-color: #d39a92;
 }
 #list li:first-child {
