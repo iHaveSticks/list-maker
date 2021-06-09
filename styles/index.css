@@ -20,7 +20,10 @@ body {
   margin: auto;
   width: 33em;
   border: 2px white solid;
-  padding: 6px;
+  /* padding: 6px;
+     padding is set for #listConatainer and #inputBox individually
+     otherwise outline won't work correctly on list items
+  */
 }
 
 #listContainer {
@@ -28,15 +31,15 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   min-width: 20em;
-  height: calc(20em + 40px);
+  height: calc(20em + 57px);
 }
 
 #list {
   /* ul for list */
   user-select: none;
   overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0;
+  overflow-x: clip;
+  padding: 6px 0 6px 6px;
   margin: 0;
   width: calc(17em + 23px); /* 23px for scroll bar */
 }
@@ -48,7 +51,7 @@ body {
   line-height: 1em;
   list-style: none;
   cursor: default;
-  overflow: hidden;
+  overflow: clip;
   padding: 0.5em 0.2em;
   margin: 5px 0;
   background-color: #a3d392;
@@ -56,6 +59,11 @@ body {
   width: 17em;
   max-width: 17em;
 }
+
+#list li:focus-visible {
+  outline: auto;
+}
+
 #list li:focus-visible,
 #list li:hover {
   background-color: #d39a92;
@@ -70,6 +78,8 @@ body {
 #inputBox {
   width: 15em;
   height: calc(20em + 40px);
+  padding: 6px 6px 6px 0;
+  margin: 0;
   align-self: flex-end;
 
   display: flex;
