@@ -56,7 +56,7 @@ body {
   width: 17em;
   max-width: 17em;
 }
-#list li:focus,
+#list li:focus-visible,
 #list li:hover {
   background-color: #d39a92;
 }
@@ -96,7 +96,7 @@ body {
 }
 
 #addItemBtn:hover,
-#addItemBtn:focus {
+#addItemBtn:focus-visible {
   box-shadow: inset 1px 1px 6px #263f31;
 }
 
@@ -110,13 +110,13 @@ body {
   background-color: #77c699;
 }
 .goodBtn:hover,
-.goodBtn:focus {
+.goodBtn:focus-visible {
   box-shadow: inset 1px 1px 6px #263f31;
 }
 .badBtn {
   background-color: #c67877;
 }
 .badBtn:hover,
-.badBtn:focus {
+.badBtn:focus-visible {
   box-shadow: inset 1px 1px 6px #3f2626;
 }
