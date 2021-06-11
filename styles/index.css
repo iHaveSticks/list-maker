@@ -1,4 +1,7 @@
 html {
+  --themeBlack: #404040;
+  --thumbColor: #878c83;
+
   font-family: "montserrat", sans-serif;
   font-size: 110%;
   box-sizing: border-box;
@@ -11,7 +14,7 @@ html {
 }
 
 body {
-  background-color: #404040;
+  background-color: var(--themeBlack);
 }
 
 #listSpace {
@@ -41,7 +44,7 @@ body {
   overflow-x: clip;
   padding: 6px 0 6px 6px;
   margin: 0;
-  width: calc(17em + 23px); /* 23px for scroll bar */
+  width: calc(17em + 20px); /* 23px for scroll bar */
 }
 #list li {
   font-family: "Open Sans", sans-serif;
@@ -129,4 +132,19 @@ body {
 .badBtn:hover,
 .badBtn:focus-visible {
   box-shadow: inset 1px 1px 6px #3f2626;
+}
+
+/* scrollbar */
+
+#list::-webkit-scrollbar {
+  width: 12px;
+}
+#list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbColor) #616161;
+}
+
+#list::-webkit-scrollbar-thumb {
+  background-color: var(--thumbColor);
+  border: 3px solid var(--themeBlack);
 }
