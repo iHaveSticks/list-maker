@@ -20,7 +20,7 @@ function validateInput() {
   
   if (!input) {
     addError("Please enter something");
-    document.getElementById("listInput").value = ""; // in-case spaces where added
+    document.getElementById("listInput").value = ""; // in-case spaces were added
     focusOn("listInput");
   } else if (input.length > maxChars) {
     addError(`Too long; ${maxChars} max chars\n${input.length} / ${maxChars} characters`);
